@@ -100,7 +100,7 @@ namespace Test
 		{
 			Server server = new Server(
 				256,
-				"127.0.0.1", 40000,
+				/*"127.0.0.1", */40000,
 				0x1122334455667788L,
 				_privateKey
 				);
