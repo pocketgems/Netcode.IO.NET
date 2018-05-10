@@ -381,7 +381,11 @@ namespace NetcodeIO.NET
 		{
 			while (isRunning)
 			{
-				Tick(DateTime.Now.GetTotalSeconds());
+                try {
+                    Tick(DateTime.Now.GetTotalSeconds());
+                } catch (Exception e) {
+                    System.Diagnostics.Trace.WriteLine(e);
+                }
 
 				// sleep until next tick
 				double tickLength = 1.0 / tickrate;
@@ -1030,7 +1034,7 @@ namespace NetcodeIO.NET
 			if (logLevel > this.LogLevel)
 				return;
 
-			Console.WriteLine(log);
+			System.Diagnostics.Trace.WriteLine(log);
 		}
 
 		private void log(string log, NetcodeLogLevel logLevel, params object[] args)
@@ -1038,7 +1042,7 @@ namespace NetcodeIO.NET
 			if (logLevel > this.LogLevel)
 				return;
 
-			Console.WriteLine(string.Format(log, args));
+            System.Diagnostics.Trace.WriteLine(string.Format(log, args));
 		}
 
 		#endregion
