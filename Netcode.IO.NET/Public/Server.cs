@@ -228,6 +228,10 @@ namespace NetcodeIO.NET
 
 		internal Server(ISocketContext socketContext, int maxSlots, string address, int port, ulong protocolID, byte[] privateKey)
 		{
+            if (maxSlots < 1) {
+                throw new ArgumentOutOfRangeException(nameof(maxSlots), "must be at least 1");
+            }
+
 			this.tickrate = 60;
 
 			this.maxSlots = maxSlots;
