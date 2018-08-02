@@ -386,11 +386,7 @@ namespace NetcodeIO.NET
 		{
 			while (isRunning)
 			{
-                try {
-                    Tick(DateTime.Now.GetTotalSeconds());
-                } catch (Exception e) {
-                    System.Diagnostics.Trace.WriteLine(e);
-                }
+                Tick(DateTime.Now.GetTotalSeconds());
 
 				// sleep until next tick
 				double tickLength = 1.0 / tickrate;

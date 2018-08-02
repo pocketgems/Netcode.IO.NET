@@ -89,18 +89,20 @@ namespace NetcodeIO.NET.Utils.IO
 		{
 			while (true)
 			{
-                try {
+                try
+                {
                     datagramQueue.ReadFrom(internalSocket);
-                } catch (Exception e) {
-                    System.Diagnostics.Trace.WriteLine(e);
-
-                    if (e is SocketException socketException && socketException.SocketErrorCode == SocketError.ConnectionReset) {
-                        continue;
+                }
+                catch (Exception e)
+                {
+                    if (e is SocketException)
+                    {
+                        var socketException = e as SocketException;
+                        if (socketException.SocketErrorCode == SocketError.ConnectionReset) continue;
                     }
-
                     return;
                 }
-			}
+            }
 		}
 	}
 
